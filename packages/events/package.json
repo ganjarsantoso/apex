@@ -1,0 +1,27 @@
+{
+  "name": "@apex/events",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Event bus system for decoupled inter-package communication",
+  "keywords": ["opencode", "apex", "events", "pubsub"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
+  "dependencies": {
+    "@apex/types": "workspace:*"
+  }
+}

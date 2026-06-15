@@ -1,0 +1,32 @@
+{
+  "name": "@apex/knowledge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Knowledge base with storage, search, ranking, consolidation, and feedback",
+  "keywords": ["opencode", "apex", "knowledge", "lessons"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@apex/manifest": "workspace:*",
+    "@apex/memory-graph": "workspace:*",
+    "@apex/semantic": "workspace:*",
+    "@apex/shared": "workspace:*",
+    "@apex/types": "workspace:*"
+  }
+}

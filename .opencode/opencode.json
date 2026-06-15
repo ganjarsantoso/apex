@@ -1,0 +1,147 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4-5",
+  "small_model": "anthropic/claude-haiku-4-5",
+  "default_agent": "orchestrator",
+
+  "instructions": [
+    "prompts/apex-system-prompt.md",
+    "AGENTS.md"
+  ],
+
+  "skills": {
+    "paths": [
+      "../skills"
+    ]
+  },
+
+  "agent": {
+    "orchestrator": {
+      "description": "APEX orchestration layer — manages state machine, phase transitions, profile switching",
+      "mode": "primary",
+      "model": "anthropic/claude-sonnet-4-5",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true,
+        "changed-files": true
+      }
+    },
+    "brain": {
+      "description": "APEX Brain — interactive discovery, targeted questioning, spec writing",
+      "mode": "subagent",
+      "model": "anthropic/claude-opus-4-5",
+      "prompt": "You are in BRAIN mode. Follow the APEX Discovery protocol: ask one question at a time, propose 2-3 approaches with trade-offs, present design in sections. Do NOT write code. Do NOT execute tasks.",
+      "tools": {
+        "read": true,
+        "write": true,
+        "bash": false,
+        "edit": false
+      }
+    },
+    "planner": {
+      "description": "APEX Planner — atomic task decomposition",
+      "mode": "subagent",
+      "model": "anthropic/claude-opus-4-5",
+      "prompt": "You are in PLANNER mode. Decompose the approved spec into atomic tasks (2-5 min each). Every task must have exact file paths, complete code, and verification steps.",
+      "tools": {
+        "read": true,
+        "write": true,
+        "bash": false,
+        "edit": false
+      }
+    },
+    "engine": {
+      "description": "APEX Engine — automated task execution with TDD and security",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5",
+      "prompt": "You are in ENGINE mode. Execute the compiled task list exactly as specified. Use TDD: RED→GREEN→REFACTOR. Do NOT ask questions. Do NOT modify the plan. Sentinel will scan your commits.",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
+    },
+    "code-reviewer": {
+      "description": "Spec compliance + code quality review",
+      "mode": "subagent",
+      "model": "anthropic/claude-opus-4-5",
+      "prompt": "You are in REVIEW mode. Perform two-stage review: (1) Spec compliance — does the code match the spec? (2) Code quality — is the code well-structured? Report issues by severity.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "security-reviewer": {
+      "description": "APEX Sentinel — security vulnerability scan and governance enforcement",
+      "mode": "subagent",
+      "model": "anthropic/claude-opus-4-5",
+      "prompt": "You are in SECURITY REVIEW mode. Run Sentinel: detect secrets, dangerous patterns, prompt injection, and policy violations. Block CRITICAL issues. Report all findings.",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": true,
+        "edit": true
+      }
+    }
+  },
+
+  "command": {
+    "brainstorm": {
+      "description": "Start interactive discovery — explore requirements, propose approaches, write spec",
+      "template": "SWITCH_PROFILE=interactive\n\n$ARGUMENTS",
+      "agent": "brain",
+      "subtask": true
+    },
+    "spec": {
+      "description": "Write design specification document",
+      "template": "{file:templates/spec-template.md}\n\n$ARGUMENTS",
+      "agent": "brain",
+      "subtask": true
+    },
+    "plan": {
+      "description": "Create implementation plan from approved spec",
+      "template": "{file:templates/plan-template.md}\n\n$ARGUMENTS",
+      "agent": "planner",
+      "subtask": true
+    },
+    "approve": {
+      "description": "Approve plan and freeze interactive phase",
+      "template": "CONFIRM: Freeze plan and transition to COMPILED phase? This ends interactive planning.\n$ARGUMENTS"
+    },
+    "compile": {
+      "description": "Compile approved plan to immutable execution JSON",
+      "template": "SWITCH_PROFILE=compilation\n$ARGUMENTS"
+    },
+    "run": {
+      "description": "Execute compiled execution plan — automated task execution with TDD and security",
+      "template": "SWITCH_PROFILE=execution\n\n$ARGUMENTS",
+      "agent": "engine",
+      "subtask": true
+    },
+    "review": {
+      "description": "Run 3-stage review: spec compliance → code quality → security scan",
+      "template": "SWITCH_PROFILE=review\n\n$ARGUMENTS"
+    },
+    "status": {
+      "description": "Show current phase, profile, context usage, and next available actions",
+      "template": "Report current APEX status.\n\n$ARGUMENTS"
+    },
+    "compact": {
+      "description": "Manually trigger context compression",
+      "template": "Compress context: archive completed tasks, summarize milestone.\n\n$ARGUMENTS"
+    },
+    "checkpoint": {
+      "description": "Save execution state snapshot for resume",
+      "template": "Save current execution state as checkpoint.\n\n$ARGUMENTS"
+    }
+  },
+
+  "permission": {
+    "mcp_*": "ask"
+  }
+}

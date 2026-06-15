@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "references": [
+    { "path": "../events" },
+    { "path": "../manifest" },
+    { "path": "../memory-graph" },
+    { "path": "../shared" }
+  ],
+  "include": ["src"]
+}

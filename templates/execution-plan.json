@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "compiledAt": "2026-06-15T00:00:00.000Z",
+  "state": "COMPILED",
+  "profile": "execution",
+  "spec": "docs/superpowers/specs/YYYY-MM-DD-feature-design.md",
+  "plan": "docs/superpowers/plans/YYYY-MM-DD-feature.md",
+  "tdd": true,
+  "securityScan": true,
+  "worktree": "feature/topic",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "Implement core component",
+      "objective": "Build the core functionality",
+      "dependencies": [],
+      "files": {
+        "create": ["src/core.ts"],
+        "test": ["tests/core.test.ts"]
+      },
+      "steps": [
+        { "description": "Write failing test", "expectedOutput": "FAIL" },
+        { "description": "Implement minimal code", "expectedOutput": "PASS" },
+        { "description": "Refactor", "expectedOutput": "All GREEN" },
+        { "description": "Commit", "expectedOutput": "Changes committed" }
+      ],
+      "acceptanceCriteria": [
+        "All tests pass",
+        "Coverage >= 80%"
+      ]
+    }
+  ]
+}

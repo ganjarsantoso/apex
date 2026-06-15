@@ -1,0 +1,29 @@
+﻿{
+  "name": "@apex/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Automated execution engine with TDD loops and security scanning",
+  "keywords": ["opencode", "apex", "engine", "execution", "tdd"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
+  "dependencies": {
+    "@apex/types": "workspace:*",
+    "@apex/shared": "workspace:*",
+    "@apex/context": "workspace:*"
+  }
+}

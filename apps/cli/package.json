@@ -1,0 +1,44 @@
+﻿{
+  "name": "@apex/cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "APEX CLI plugin for OpenCode with all slash commands",
+  "keywords": ["opencode", "apex", "cli", "plugin"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
+  "dependencies": {
+    "@apex/types": "workspace:*",
+    "@apex/shared": "workspace:*",
+    "@apex/orchestration": "workspace:*",
+    "@apex/brain": "workspace:*",
+    "@apex/planner": "workspace:*",
+    "@apex/compiler": "workspace:*",
+    "@apex/engine": "workspace:*",
+    "@apex/context": "workspace:*",
+    "@apex/events": "workspace:*",
+    "@apex/registry": "workspace:*",
+    "@apex/sentinel": "workspace:*",
+    "@apex/manifest": "workspace:*",
+    "@apex/scheduler": "workspace:*",
+    "@apex/model-router": "workspace:*",
+    "@apex/memory-graph": "workspace:*",
+    "@apex/knowledge": "workspace:*",
+    "@apex/retrospective": "workspace:*",
+    "@apex/semantic": "workspace:*"
+  }
+}

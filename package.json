@@ -1,0 +1,35 @@
+{
+  "name": "apex",
+  "version": "0.1.0",
+  "private": true,
+  "description": "APEX — Autonomous Planning and Execution eXchange: a dual-mode orchestration framework for OpenCode CLI",
+  "keywords": ["opencode", "orchestration", "ai", "planning", "execution", "state-machine", "cli"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:all": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint packages/ apps/ --ext .ts",
+    "format": "prettier --write \"packages/**/*.ts\" \"apps/**/*.ts\"",
+    "compile-prompts": "node scripts/compile-prompts.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "vitest": "^2.1.0",
+    "typescript": "^5.6.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.4.0",
+    "zod": "^3.23.0",
+    "@types/node": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,28 @@
+﻿{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../packages/types" },
+    { "path": "../packages/shared" },
+    { "path": "../packages/orchestration" },
+    { "path": "../packages/brain" },
+    { "path": "../packages/planner" },
+    { "path": "../packages/compiler" },
+    { "path": "../packages/engine" },
+    { "path": "../packages/context" },
+    { "path": "../packages/sentinel" },
+    { "path": "../packages/events" },
+    { "path": "../packages/registry" },
+    { "path": "../packages/manifest" },
+    { "path": "../packages/scheduler" },
+    { "path": "../packages/model-router" },
+    { "path": "../packages/memory-graph" },
+    { "path": "../packages/knowledge" },
+    { "path": "../packages/retrospective" },
+    { "path": "../packages/semantic" }
+  ]
+}

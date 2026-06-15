@@ -1,0 +1,29 @@
+﻿{
+  "name": "@apex/orchestration",
+  "version": "0.1.0",
+  "private": true,
+  "description": "State machine orchestrator managing APEX lifecycle phases and profile switching",
+  "keywords": ["opencode", "apex", "orchestration", "state-machine"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
+  "dependencies": {
+    "@apex/events": "workspace:*",
+    "@apex/types": "workspace:*",
+    "@apex/shared": "workspace:*"
+  }
+}

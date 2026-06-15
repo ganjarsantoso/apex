@@ -1,0 +1,31 @@
+{
+  "name": "@apex/semantic",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Semantic embedding and vector search for knowledge retrieval",
+  "keywords": ["opencode", "apex", "semantic", "embeddings"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.10.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13"
+  }
+}

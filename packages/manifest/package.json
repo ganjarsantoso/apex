@@ -1,0 +1,35 @@
+{
+  "name": "@apex/manifest",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Capability manifest and permission management",
+  "keywords": ["opencode", "apex", "manifest", "permissions"],
+  "author": "APEX Contributors",
+  "homepage": "https://github.com/anomalyco/apex#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/anomalyco/apex.git" },
+  "bugs": { "url": "https://github.com/anomalyco/apex/issues" },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts"
+  },
+  "dependencies": {
+    "@apex/events": "workspace:*",
+    "@apex/sentinel": "workspace:*",
+    "@apex/shared": "workspace:*",
+    "@apex/types": "workspace:*",
+    "better-sqlite3": "^12.10.1",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13"
+  }
+}
