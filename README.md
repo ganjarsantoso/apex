@@ -60,32 +60,34 @@ APEX is designed to be integrated seamlessly into your [OpenCode](https://openco
 
 ### Installation (One-Command)
 
-For the easiest setup, run this command in your terminal:
+For the easiest setup, run the command for your operating system:
 
+**macOS, Linux, and Windows (Git Bash/WSL):**
 ```bash
 curl -sL https://raw.githubusercontent.com/ganjarsantoso/apex/main/scripts/install.sh | bash
 ```
 
-This will clone, install dependencies, and build the framework automatically.
+**Windows (PowerShell):**
+1. Download the installation script manually: [scripts/install.sh](scripts/install.sh)
+2. Run it using Git Bash or WSL.
 
-*Note: For Windows, download the script manually from `scripts/install.sh` and run it via PowerShell.*
-
-### Publishing to NPM (Future)
-To support `npm install @ganjarsantoso/apex`, you would need to:
-1. Configure `package.json` to publish the `apps/cli` directory.
-2. Publish to the NPM registry using `npm publish`.
-Once published, you could simply use:
-```bash
-npm install -g @ganjarsantoso/apex
-```
-
+---
 
 ### Uninstallation
 
-To remove APEX from your project, simply reverse the installation:
+To remove APEX from your project, delete the installation directory:
 
-1. Remove `"@apex/cli"` from the `"plugin"` array in `.opencode/opencode.json`.
-2. Delete the `.opencode/` directory if you wish to remove all APEX-specific agent configurations.
+**macOS & Linux:**
+```bash
+rm -rf apex-framework
+```
+
+**Windows (PowerShell):**
+```powershell
+Remove-Item -Recurse -Force apex-framework
+```
+*(Also remember to remove the `@apex/cli` plugin entry from your `.opencode/opencode.json` file.)*
+
 
 ---
 
