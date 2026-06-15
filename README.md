@@ -118,6 +118,47 @@ Beyond the core lifecycle, APEX offers powerful capabilities for production-grad
 - **Pattern Exchange:** Use the `@apex/patterns` format to export, validate, and share reusable architectural blueprints or workflow templates.
 - **Checkpointing:** Use `/checkpoint` to save a snapshot of the execution state, allowing you to pause complex tasks and resume exactly where you left off.
 - **Context Compression:** The `/compact` command manages context tokens intelligently, archiving completed tasks while preserving essential project state.
+- **Model Router:** Dynamically selects the optimal LLM per task based on capability requirements (see configuration below).
+
+## 🧠 Model Router Configuration
+
+The model router (`@apex/model-router`) dynamically assigns the most suitable LLM model to each agent based on task complexity and agent role. It supports a hierarchical resolution strategy:
+
+1. **Agent-specific override** (highest priority)
+2. **Role-based override**
+3. **Agent's preferred model**
+4. **Default model**
+5. **Fallback** (first available)
+
+### Configuration File (`apex.config.json`)
+
+Create a file named `apex.config.json` in your project root:
+
+```json
+{
+  "defaultModel": "anthropic/claude-sonnet-4-5",
+  "roleOverrides": {
+    "planner": "anthropic/claude-opus-4-5",
+    "coder": "anthropic/claude-sonnet-4-5",
+    "reviewer": "anthropic/claude-opus-4-5",
+    "security": "anthropic/claude-opus-4-5"
+  },
+  "agentOverrides": {
+    "brain": "anthropic/claude-opus-4-5",
+    "engine": "anthropic/claude-sonnet-4-5"
+  }
+}
+```
+
+**Configuration options:**
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `defaultModel` | `string` | Base model used when no override matches |
+| `roleOverrides` | `Record<string, string>` | Map of agent roles to specific models |
+| `agentOverrides` | `Record<string, string>` | Map of specific agent IDs to specific models |
+
+The router resolves models in this priority order: `agentOverrides` → `roleOverrides` → agent's `preferredModel` → `defaultModel` → first available model in the registry.
 
 
 ### Core Commands
