@@ -84,7 +84,30 @@ APEX runs as an OpenCode CLI plugin.
 
 ---
 
-## 🛠️ Development
+## 📖 Tutorial & Workflow
+
+Mastering APEX requires embracing its strict state-machine lifecycle.
+
+### Step-by-Step Guide
+
+| Phase | Command | Mental Model |
+| :--- | :--- | :--- |
+| **Discover** | `/brainstorm` | "What are we doing, and why?" |
+| **Spec** | `/spec` | "Write down exactly what to build." |
+| **Decompose** | `/plan` | "How do we break this into small steps?" |
+| **Lock-in** | `/approve` | "I confirm this plan is correct." |
+| **Compile** | `/compile` | "Generate the immutable blueprint." |
+| **Build** | `/run` | "Autonomous execution (TDD loops)." |
+| **Verify** | `/review` | "Is it secure and high quality?" |
+
+### Revision & Addition Policy
+
+- **Planning Phase (Mutable):** During the `PLANNING` phase, you can iterate, re-order, or refine your plan as much as needed.
+- **Approval Boundary (Immutable):** Once you issue `/approve`, the plan is locked. This ensures stable, predictable automated execution.
+- **Adding Features:**
+  - **Best Practice:** Complete the current lifecycle (`COMPLETE` state) before starting a new lifecycle for additional features. This keeps history clean.
+  - **Emergency:** If an immediate change is required, you must trigger a `ROLLBACK` to return to the `PLANNING` phase or start a new lifecycle from scratch. Never attempt to manually edit an active, approved plan.
+
 
 ### Prerequisites
 
