@@ -54,21 +54,46 @@ graph LR
 
 ---
 
-## ⚡ Quick Start
+## ⚡ Quick Start & Installation
 
-APEX runs as an OpenCode CLI plugin.
+APEX is designed to be integrated seamlessly into your [OpenCode](https://opencode.ai) project.
 
-1. **Configure in OpenCode:**
-   ```json
-   {
-     "plugin": ["@apex/cli"]
-   }
-   ```
+### Installation
 
-2. **Execute:**
-   ```bash
-   /brainstorm "Add user authentication feature"
-   ```
+**Method 1: Project Configuration (Recommended)**
+Add `@apex/cli` to your `.opencode/opencode.json` configuration:
+
+```json
+{
+  "plugin": ["@apex/cli"]
+}
+```
+
+**Method 2: Manual Initialization**
+If you are bootstrapping a new project, use the provided script:
+```bash
+./scripts/bootstrap.sh  # Or ./scripts/bootstrap.ps1 on Windows
+```
+
+### Uninstallation
+
+To remove APEX from your project, simply reverse the installation:
+
+1. Remove `"@apex/cli"` from the `"plugin"` array in `.opencode/opencode.json`.
+2. Delete the `.opencode/` directory if you wish to remove all APEX-specific agent configurations.
+
+---
+
+## 🌟 Advanced Features
+
+Beyond the core lifecycle, APEX offers powerful capabilities for production-grade development:
+
+- **Long-term Memory:** Utilizes a persistent knowledge graph (`@apex/memory-graph`) and semantic vector search (`@apex/semantic`) to remember project context across sessions.
+- **Automated Retrospectives:** The `@apex/retrospective` package generates performance summaries and lesson extractions after tasks to improve future agent behavior.
+- **Pattern Exchange:** Use the `@apex/patterns` format to export, validate, and share reusable architectural blueprints or workflow templates.
+- **Checkpointing:** Use `/checkpoint` to save a snapshot of the execution state, allowing you to pause complex tasks and resume exactly where you left off.
+- **Context Compression:** The `/compact` command manages context tokens intelligently, archiving completed tasks while preserving essential project state.
+
 
 ### Core Commands
 
