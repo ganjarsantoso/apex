@@ -71,6 +71,24 @@ curl -sL https://raw.githubusercontent.com/ganjarsantoso/apex/main/scripts/insta
 1. Download the installation script manually: [scripts/install.sh](scripts/install.sh)
 2. Run it using Git Bash or WSL.
 
+### Installation (Node.js/pnpm)
+
+If you have [Node.js](https://nodejs.org/) installed, you can run APEX by cloning the repository and installing it locally:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/ganjarsantoso/apex.git
+cd apex
+
+# 2. Install dependencies (requires pnpm)
+pnpm install
+
+# 3. Build the project
+pnpm build
+```
+*(This is the recommended way to set up APEX for development and local usage.)*
+
+
 ---
 
 ### Uninstallation
