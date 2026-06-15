@@ -48,6 +48,10 @@ graph LR
     J --> C
 ```
 
+**Alternative Text Representation:**
+`IDEA → DISCOVERY → PLANNING → APPROVED → COMPILED → EXECUTING → REVIEW → COMPLETE`
+*(If Failed: → ROLLBACK → PLANNING)*
+
 ---
 
 ## ⚡ Quick Start
