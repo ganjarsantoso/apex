@@ -58,22 +58,27 @@ graph LR
 
 APEX is designed to be integrated seamlessly into your [OpenCode](https://opencode.ai) project.
 
-### Installation
+### Installation (One-Command)
 
-**Method 1: Project Configuration (Recommended)**
-Add `@apex/cli` to your `.opencode/opencode.json` configuration:
+For the easiest setup, run this command in your terminal:
 
-```json
-{
-  "plugin": ["@apex/cli"]
-}
-```
-
-**Method 2: Manual Initialization**
-If you are bootstrapping a new project, use the provided script:
 ```bash
-./scripts/bootstrap.sh  # Or ./scripts/bootstrap.ps1 on Windows
+curl -sL https://raw.githubusercontent.com/ganjarsantoso/apex/main/scripts/install.sh | bash
 ```
+
+This will clone, install dependencies, and build the framework automatically.
+
+*Note: For Windows, download the script manually from `scripts/install.sh` and run it via PowerShell.*
+
+### Publishing to NPM (Future)
+To support `npm install @ganjarsantoso/apex`, you would need to:
+1. Configure `package.json` to publish the `apps/cli` directory.
+2. Publish to the NPM registry using `npm publish`.
+Once published, you could simply use:
+```bash
+npm install -g @ganjarsantoso/apex
+```
+
 
 ### Uninstallation
 
