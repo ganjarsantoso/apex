@@ -229,6 +229,15 @@ importers:
         specifier: workspace:*
         version: link:../types
 
+  packages/patterns:
+    dependencies:
+      '@apex/knowledge':
+        specifier: workspace:*
+        version: link:../knowledge
+      '@apex/shared':
+        specifier: workspace:*
+        version: link:../shared
+
   packages/planner:
     dependencies:
       '@apex/knowledge':
