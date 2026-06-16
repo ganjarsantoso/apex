@@ -138,6 +138,10 @@
     "checkpoint": {
       "description": "Save execution state snapshot for resume",
       "template": "Save current execution state as checkpoint.\n\n$ARGUMENTS"
+    },
+    "skills": {
+      "description": "List recommended companion skills for the current phase",
+      "template": "List the companion skills available for the current APEX phase. Reference COMPANION_SKILLS in @apex/shared/constants.ts and the companionSkills field in the current RuntimeProfile. Suggest which skill to load next.\n\n$ARGUMENTS"
     }
   },
 

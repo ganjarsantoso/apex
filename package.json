@@ -18,7 +18,10 @@
     "lint": "eslint packages/ apps/ --ext .ts",
     "format": "prettier --write \"packages/**/*.ts\" \"apps/**/*.ts\"",
     "compile-prompts": "node scripts/compile-prompts.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "setup-skills": "npx skills add vercel-labs/agent-browser@agent-browser -g -y && npx skills add mattpocock/skills@tdd -g -y && npx skills add mattpocock/skills@to-prd -g -y && npx skills add anthropics/skills@skill-creator -g -y",
+    "setup-companion-skills": "npx skills add trailofbits/skills@ask-questions-if-underspecified -g -y && npx skills add openai/skills@security-threat-model -g -y && npx skills add trailofbits/skills@property-based-testing -g -y && npx skills add trailofbits/skills@differential-review -g -y",
+    "setup-gstack": "npx skills add https://github.com/garrytan/gstack -g -y"
   },
   "devDependencies": {
     "tsup": "^8.3.0",

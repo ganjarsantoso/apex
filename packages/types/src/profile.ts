@@ -31,6 +31,7 @@ export const RuntimeProfileConfigSchema = z.object({
   interactiveAllowed: z.boolean(),
   autoExecute: z.boolean(),
   capabilities: CapabilityProfileSchema,
+  companionSkills: z.array(z.string()).optional(),
 });
 
 export type RuntimeProfileConfig = z.infer<typeof RuntimeProfileConfigSchema>;
@@ -48,6 +49,7 @@ export const PROFILES: Record<RuntimeProfile, RuntimeProfileConfig> = {
       shell: { execute: false },
       network: { outbound: false },
     },
+    companionSkills: ['ask-questions-if-underspecified', 'security-threat-model', 'plan-eng-review'],
   },
   execution: {
     name: 'execution',
@@ -65,6 +67,7 @@ export const PROFILES: Record<RuntimeProfile, RuntimeProfileConfig> = {
       shell: { execute: true },
       network: { outbound: true },
     },
+    companionSkills: ['property-based-testing'],
   },
   review: {
     name: 'review',
@@ -86,5 +89,6 @@ export const PROFILES: Record<RuntimeProfile, RuntimeProfileConfig> = {
       shell: { execute: true },
       network: { outbound: false },
     },
+    companionSkills: ['differential-review'],
   },
 };

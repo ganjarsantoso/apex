@@ -78,7 +78,7 @@ export class KnowledgeRatingStore {
   }
 
   hasFeedback(targetId: string): boolean {
-    return this.feedback.values().some(f => f.targetId === targetId);
+    return Array.from(this.feedback.values()).some(f => f.targetId === targetId);
   }
 
   get distinctTargetCount(): number {

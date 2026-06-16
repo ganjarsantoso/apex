@@ -161,6 +161,36 @@ Create a file named `apex.config.json` in your project root:
 The router resolves models in this priority order: `agentOverrides` → `roleOverrides` → agent's `preferredModel` → `defaultModel` → first available model in the registry.
 
 
+### Companion Skills
+
+APEX works well with optional companion skills from [skills.sh](https://skills.sh/) — vendor-published skills that enhance specific phases. These are NOT bundled; install only what you need.
+
+| Phase | Skill | Publisher | Benefit |
+| :--- | :--- | :--- | :--- |
+| DISCOVERY | `ask-questions-if-underspecified` | Trail of Bits | Helps Brain detect ambiguous objectives |
+| PLANNING | `security-threat-model` | OpenAI | AppSec threat modeling before COMPILE |
+| PLANNING | `plan-eng-review` | Garry Tan | Engineering-manager review of plan |
+| EXECUTING | `property-based-testing` | Trail of Bits | Property-based testing in TDD loop |
+| REVIEW | `differential-review` | Trail of Bits | Security-focused diff/PR review |
+
+Install all at once:
+
+```bash
+pnpm setup-companion-skills
+```
+
+Or individually:
+
+```bash
+npx skills add trailofbits/skills@ask-questions-if-underspecified -g -y
+npx skills add openai/skills@security-threat-model -g -y
+npx skills add garytan/skills@plan-eng-review -g -y
+npx skills add trailofbits/skills@property-based-testing -g -y
+npx skills add trailofbits/skills@differential-review -g -y
+```
+
+> These skills are referenced in each [RuntimeProfile](./packages/types/src/profile.ts) under `companionSkills` so the orchestrator, CLI, and agents can suggest the right skill for the current phase.
+
 ### Core Commands
 
 | Command | Phase | Description |
